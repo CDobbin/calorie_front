@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Nutrition Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .suggestion-list {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            display: none;
+        }
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold mb-4">Recipe Nutrition Calculator</h1>
+        <div id="ingredient-form" class="mb-4">
+            <div class="flex mb-2">
+                <input type="text" id="ingredient-input" class="border p-2 flex-grow mr-2" placeholder="Search for whole ingredients (e.g., chicken breast, chicken thigh)">
+                <input type="number" id="quantity-input" class="border p-2 w-24 mr-2" placeholder="Grams" min="0">
+                <button id="add-ingredient" class="bg-blue-500 text-white p-2 rounded">Add</button>
+            </div>
+            <div id="suggestion-list" class="suggestion-list"></div>
+        </div>
+        <div id="ingredient-list" class="mb-4"></div>
+        <button id="calculate" class="bg-green-500 text-white p-2 rounded">Calculate Nutrition</button>
+        <div id="results" class="mt-4"></div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
