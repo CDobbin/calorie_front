@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const query = ingredientInput.value.trim();
         if (!query) return suggestionList.innerHTML = '';
 
-        const res = await fetch(`http://localhost:5000/search_ingredient?query=${encodeURIComponent(query)}`);
+        const res = await fetch(`https://calorie-api-e5my.onrender.com/search_ingredient?query=${encodeURIComponent(query)}`);
         const foods = await res.json();
 
         suggestionList.innerHTML = foods.map(f => `<div class="p-2 cursor-pointer hover:bg-gray-100" data-id="${f.fdcId}" data-name="${f.description}">${f.description}</div>`).join('');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     calcBtn.addEventListener('click', async () => {
         const ingredients = JSON.parse(localStorage.getItem('ingredients') || '[]');
-        const res = await fetch('http://localhost:5000/calculate_nutrition', {
+        const res = await fetch('https://calorie-api-e5my.onrender.com/calculate_nutrition', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ingredients })
