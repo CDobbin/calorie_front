@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <script defer src="main.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login to Calorie Calculator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-  <div class="bg-white p-6 rounded shadow-md w-96">
-    <h2 class="text-xl font-bold mb-4">Login to Calorie Calculator</h2>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-4 text-center">Login to Calorie Calculator</h1>
     <div class="mb-4">
-      <input type="email" id="email" placeholder="Email" class="border px-3 py-2 w-full mb-2" />
-      <input type="password" id="password" placeholder="Password" class="border px-3 py-2 w-full mb-2" />
-      <button id="login-btn" class="bg-blue-500 text-white px-4 py-2 w-full mb-2">Login</button>
-      <button id="register-btn" class="bg-gray-600 text-white px-4 py-2 w-full">Register</button>
+      <input id="email" type="email" placeholder="Email" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
     </div>
-    <div id="message" class="text-red-500 text-sm"></div>
+    <div class="mb-4">
+      <input id="password" type="password" placeholder="Password" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+    <div class="flex justify-between mb-4">
+      <button id="login-btn" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Login</button>
+      <button id="register-btn" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Register</button>
+    </div>
+    <p id="message" class="text-red-600 text-center"></p>
   </div>
+  <script src="main.js"></script>
 </body>
 </html>

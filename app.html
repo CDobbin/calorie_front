@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calorie Calculator</title>
-  <script defer src="app.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 p-4">
-  <div class="max-w-2xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4">Calorie Calculator</h1>
-
-    <div class="mb-4">
-      <input id="ingredient-input" type="text" placeholder="Search ingredient..." class="border px-2 py-1 w-full" />
-      <div id="suggestion-list" class="bg-white border mt-1"></div>
-      <input id="quantity-input" type="number" placeholder="Quantity (grams)" class="border px-2 py-1 w-full mt-2" />
-      <button id="add-ingredient" class="bg-blue-500 text-white px-4 py-1 mt-2">Add Ingredient</button>
+<body class="bg-gray-100 min-h-screen p-4">
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-2xl font-bold">Calorie Calculator</h1>
+      <button id="logout" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Logout</button>
     </div>
 
-    <div id="ingredient-list" class="mb-4"></div>
-
-    <div class="flex gap-2 mb-4">
-      <button id="calculate" class="bg-purple-600 text-white px-4 py-1">Calculate</button>
-      <button id="clear-ingredients" class="bg-red-600 text-white px-4 py-1">Clear</button>
+    <div class="mb-6">
+      <input id="ingredient-input" type="text" placeholder="Search for an ingredient" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <div id="suggestion-list" class="max-h-40 overflow-y-auto border rounded mt-1"></div>
+    </div>
+    <div class="mb-6">
+      <input id="quantity-input" type="number" placeholder="Quantity (grams)" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+    </div>
+    <div class="mb-6">
+      <button id="add-ingredient" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add Ingredient</button>
     </div>
 
-    <div class="mb-4">
-      <input type="text" id="recipe-name" placeholder="Recipe Name" class="border px-2 py-1 mr-2" />
-      <button id="save-recipe" class="bg-teal-600 text-white px-4 py-1">Save Recipe</button>
+    <div id="ingredient-list" class="mb-6"></div>
+
+    <div class="flex justify-between mb-6">
+      <button id="calculate" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Calculate</button>
+      <button id="clear-ingredients" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Clear</button>
     </div>
 
-    <div id="results" class="mb-4"></div>
+    <div id="results" class="mb-6"></div>
+
+    <div class="mb-6">
+      <input id="recipe-name" type="text" placeholder="Recipe Name" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
+      <button id="save-recipe" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Save Recipe</button>
+    </div>
 
     <div>
-      <button id="load-recipes" class="bg-gray-600 text-white px-4 py-1 mb-2">Load My Recipes</button>
+      <button id="load-recipes" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 mb-4">Load My Recipes</button>
       <div id="saved-recipes"></div>
     </div>
   </div>
+  <script src="app.js"></script>
 </body>
 </html>
