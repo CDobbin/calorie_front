@@ -23,8 +23,13 @@ getEl('ingredient-input').addEventListener('input', async e => {
   debounceTimer = setTimeout(async () => {
     const query = e.target.value.trim();
     getEl('suggestion-list').innerHTML = query ? '<p>Loading...</p>' : '';
-    if (!query) return;
+    if (!query || typeof query !== 'string' || query.length < 1) {
+      console.log('Invalid or empty query:', query);
+      getEl('suggestion-list').innerHTML = '<p>Please enter a valid ingredient</p>';
+      return;
+    }
     try {
+      console.log('Sending search request for query:', query);
       const res = await fetch(`${API_URL}/search_ingredient?query=${encodeURIComponent(query)}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -50,6 +55,7 @@ getEl('ingredient-input').addEventListener('input', async e => {
     }
   }, 300);
 });
+
 
 getEl('add-ingredient').addEventListener('click', () => {
   const qty = parseFloat(getEl('quantity-input').value);
