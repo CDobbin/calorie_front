@@ -1,4 +1,4 @@
-const API_URL = 'https://calorie-api-e5my.onrender.com';
+const API_URL = 'https://calorie-back.onrender.com';
 const token = localStorage.getItem('token');
 
 let selectedFood = null;
