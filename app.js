@@ -28,7 +28,11 @@ getEl('ingredient-input').addEventListener('input', async e => {
       const res = await fetch(`${API_URL}/search_ingredient?query=${encodeURIComponent(query)}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-      if (!res.ok) throw new Error((await res.json()).error || 'Search failed');
+      if (!res.ok) {
+        const text = await res.text();
+        console.error('Search response:', res.status, text);
+        throw new Error(`Search failed: ${res.status} ${text.slice(0, 100)}`);
+      }
       const foods = await res.json();
       getEl('suggestion-list').innerHTML = foods.map(f => `
         <div class="p-2 cursor-pointer hover:bg-gray-100" data-id="${f.fdcId}" data-name="${f.description}">${f.description}</div>
