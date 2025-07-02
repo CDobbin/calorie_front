@@ -3,48 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calorie Calculator</title>
+  <title>Login</title>
   <script defer src="main.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css">
 </head>
-<body class="bg-gray-50 text-gray-800 p-4">
-  <div class="max-w-2xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4">Calorie Calculator</h1>
-
-    <!-- Auth -->
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-6 rounded shadow-md w-96">
+    <h2 class="text-xl font-bold mb-4">Login to Calorie Calculator</h2>
     <div class="mb-4">
-      <input type="email" id="email" placeholder="Email" class="border px-2 py-1 mr-2" />
-      <input type="password" id="password" placeholder="Password" class="border px-2 py-1 mr-2" />
-      <button id="login-btn" class="bg-blue-500 text-white px-4 py-1">Login</button>
-      <button id="register-btn" class="bg-green-500 text-white px-4 py-1">Register</button>
+      <input type="email" id="email" placeholder="Email" class="border px-3 py-2 w-full mb-2" />
+      <input type="password" id="password" placeholder="Password" class="border px-3 py-2 w-full mb-2" />
+      <button id="login-btn" class="bg-blue-500 text-white px-4 py-2 w-full mb-2">Login</button>
+      <button id="register-btn" class="bg-gray-600 text-white px-4 py-2 w-full">Register</button>
     </div>
-
-    <!-- Ingredient Search -->
-    <div class="mb-4">
-      <input id="ingredient-input" type="text" placeholder="Search ingredient..." class="border px-2 py-1 w-full" />
-      <div id="suggestion-list" class="bg-white border mt-1"></div>
-      <input id="quantity-input" type="number" placeholder="Quantity (grams)" class="border px-2 py-1 w-full mt-2" />
-      <button id="add-ingredient" class="bg-blue-500 text-white px-4 py-1 mt-2">Add Ingredient</button>
-    </div>
-
-    <div id="ingredient-list" class="mb-4"></div>
-
-    <div class="flex gap-2 mb-4">
-      <button id="calculate" class="bg-purple-600 text-white px-4 py-1">Calculate</button>
-      <button id="clear-ingredients" class="bg-red-600 text-white px-4 py-1">Clear</button>
-    </div>
-
-    <div class="mb-4">
-      <input type="text" id="recipe-name" placeholder="Recipe Name" class="border px-2 py-1 mr-2" />
-      <button id="save-recipe" class="bg-teal-600 text-white px-4 py-1">Save Recipe</button>
-    </div>
-
-    <div id="results" class="mb-4"></div>
-
-    <div>
-      <button id="load-recipes" class="bg-gray-600 text-white px-4 py-1 mb-2">Load My Recipes</button>
-      <div id="saved-recipes"></div>
-    </div>
+    <div id="message" class="text-red-500 text-sm"></div>
   </div>
 </body>
 </html>
