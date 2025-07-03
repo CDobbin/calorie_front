@@ -56,7 +56,6 @@ getEl('ingredient-input').addEventListener('input', async e => {
   }, 300);
 });
 
-
 getEl('add-ingredient').addEventListener('click', () => {
   const qty = parseFloat(getEl('quantity-input').value);
   if (!selectedFood || isNaN(qty) || qty <= 0) {
@@ -166,6 +165,7 @@ getEl('load-recipes').addEventListener('click', async () => {
         <p><strong>Ingredients:</strong> ${r.ingredients.map(i => `${i.name} (${i.quantity}g)`).join(', ')}</p>
         <p><strong>Nutrition:</strong> ${Object.entries(r.nutrition).map(([k, v]) => `${k}: ${v.toFixed(2)}`).join(', ')}</p>
         <button class="text-blue-600 load-recipe-btn" data-id="${r.id}">Load Recipe</button>
+        <button class="text-red-600 delete-recipe-btn ml-2" data-id="${r.id}">Delete Recipe</button>
       </div>`).join('') : '<p>No saved recipes.</p>';
   } catch (error) {
     getEl('saved-recipes').innerHTML = `<p class="text-red-600">Error: ${error.message}</p>`;
@@ -174,7 +174,7 @@ getEl('load-recipes').addEventListener('click', async () => {
   }
 });
 
-getEl('saved-recipes').addEventListener('click', e => {
+getEl('saved-recipes').addEventListener('click', async e => {
   if (e.target.classList.contains('load-recipe-btn')) {
     const recipeId = e.target.dataset.id;
     const recipe = recipes.find(r => r.id === parseInt(recipeId));
@@ -189,6 +189,26 @@ getEl('saved-recipes').addEventListener('click', e => {
         <p><strong>Carbs:</strong> ${recipe.nutrition.carbohydrates ? recipe.nutrition.carbohydrates.toFixed(2) : '0.00'} g</p>
         <p><strong>Fiber:</strong> ${recipe.nutrition.fiber ? recipe.nutrition.fiber.toFixed(2) : '0.00'} g</p>
       `;
+    }
+  } else if (e.target.classList.contains('delete-recipe-btn')) {
+    if (!confirm('Are you sure you want to delete this recipe?')) return;
+    const recipeId = e.target.dataset.id;
+    try {
+      const res = await fetch(`${API_URL}/delete_recipe`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ recipe_id: recipeId })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to delete recipe');
+      alert(data.message);
+      // Refresh recipe list
+      getEl('load-recipes').click();
+    } catch (error) {
+      alert(`Error: ${error.message}`);
     }
   }
 });
