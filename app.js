@@ -53,7 +53,7 @@ getEl('ingredient-input').addEventListener('input', async e => {
     } catch (error) {
       getEl('suggestion-list').innerHTML = `<p class="text-red-600">Error: ${error.message}</p>`;
     }
-  }, 300);
+  }, 500);
 });
 
 getEl('add-ingredient').addEventListener('click', () => {
